@@ -1,0 +1,1221 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<!-- Head -->
+<head>
+    <!-- Page Meta Tags-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="mask-icon" href="./assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="{%static 'assets/css/libs.bundle.css' %}" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{%static 'assets/css/theme.bundle.css' %}" />
+
+    <!-- Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.min.css">
+    <!-- Fix for custom scrollbar if JS is disabled-->
+    <noscript>
+        <style>
+          /**
+          * Reinstate scrolling for non-JS clients
+          */
+          .simplebar-content-wrapper {
+            overflow: auto;
+          }
+        </style>
+    </noscript>
+
+    <!-- Page Title -->
+    <title>SneakerFever | product</title>
+    
+</head>
+<body class="">
+
+    <!-- Navbar -->
+    <!-- Navbar -->
+    <nav
+        class="navbar navbar-expand-lg navbar-light bg-white border-bottom mx-0 p-0 flex-column  ">
+        <div class="w-100 pb-lg-0 pt-lg-0 pt-4 pb-3">
+            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap">
+    
+                <!-- Logo-->
+                <a class="navbar-brand fw-bold fs-3 m-0 p-0 flex-shrink-0" href="{%url 'home'%}">
+                    <!-- Start of Logo-->
+                    <div class="d-flex align-items-center">
+                        <div class="f-w-6 d-flex align-items-center me-2 lh-1">
+                            <img src="{{MEDIA_URL}}images\logos\sneakerfever 1.png" alt="" class="official-logo">
+                        </div> <span class="fs-5"></span>
+                    </div>
+                    <!-- / Logo-->
+                    
+                </a>
+                <!-- / Logo-->
+    
+                <!-- Main Navigation-->
+                <div class="ms-5 flex-shrink-0 collapse navbar-collapse navbar-collapse-light w-auto flex-grow-1" id="navbarNavDropdown">
+    
+                    <!-- Mobile Nav Toggler-->
+                    <button
+                        class="btn btn-link px-2 text-decoration-none navbar-toggler border-0 position-absolute top-0 end-0 mt-3 me-2"
+                        data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="ri-close-circle-line ri-2x"></i>
+                    </button>
+                    <!-- / Mobile Nav Toggler-->
+    
+                    <ul class="navbar-nav py-lg-2 mx-auto">
+                         
+                        <li class="nav-item me-lg-4 dropdown position-static">
+                            <a class="nav-link fw-bolder dropdown-toggle py-lg-4" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                               Categories 
+                            </a>
+                            
+                          
+                            <ul class="dropdown-menu">
+                                {% for category in categories %}
+                                <li><a class="dropdown-item" href="{% url 'category' category.id %}">{{category.name}}</a></li>
+        
+                                {% endfor %}
+                            </ul>
+                          
+                        </li>
+                    
+                        <li class="nav-item dropdown me-lg-4">
+                            <a class="nav-link fw-bolder dropdown-toggle py-lg-4" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Demo Pages
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{%url 'home'%}">Homepage</a></li>
+                                <li><a class="dropdown-item" href="{%url 'cart'%}">Cart</a></li>
+                                <li><a class="dropdown-item" href="{%url 'checkout'%}">Checkout</a></li>
+                              </ul>
+                        </li>
+                    </ul>         </div>
+                <!-- / Main Navigation-->
+    
+                <!-- Navbar Icons-->
+                <ul class="list-unstyled mb-0 d-flex align-items-center">
+    
+                    <!-- Navbar Toggle Icon-->
+                    <li class="d-inline-block d-lg-none">
+                        <button
+                            class="btn btn-link px-2 text-decoration-none navbar-toggler border-0 d-flex align-items-center"
+                            data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="ri-menu-line ri-lg align-middle"></i>
+                        </button>
+                    </li>
+                    <!-- /Navbar Toggle Icon-->
+    
+                    <!-- Navbar Search-->
+                    <li class="ms-1 d-inline-block">
+                        <button
+                            class="btn btn-link px-2 text-decoration-none d-flex align-items-center"
+                            data-pr-search>
+                            <i class="ri-search-2-line ri-lg align-middle"></i>
+                        </button>
+                    </li>
+                    <!-- /Navbar Search-->
+    
+                    <!-- Navbar Wishlist-->
+                    <li class="ms-1 d-none d-lg-inline-block">
+                        <a class="btn btn-link px-2 py-0 text-decoration-none d-flex align-items-center"
+                            href="{%url 'login'%}">
+                            <i class="ri-heart-line ri-lg align-middle"></i>
+                        </a>
+                    </li>
+                    <!-- /Navbar Wishlist-->
+    
+                    <!-- Navbar Login-->
+                    <li class="ms-1 d-none d-lg-inline-block">
+                        <a class="btn btn-link px-2 text-decoration-none d-flex align-items-center"
+                            href="{%url 'login'%}">
+                            <i class="ri-user-line ri-lg align-middle"></i>
+                        </a>
+                    </li>
+                    <!-- /Navbar Login-->
+    
+                    <!-- Navbar Cart-->
+                    <li class="ms-1 d-inline-block position-relative">
+                        <button
+                                class="btn btn-link px-2 text-decoration-none d-flex align-items-center disable-child-pointer"
+                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                                <i class="ri-shopping-cart-2-line ri-lg align-middle position-relative z-index-10"></i>
+                                <span
+                                    id= 'productsCount' class="fs-xs fw-bolder f-w-5 f-h-5 bg-orange rounded-lg d-block lh-1 pt-1 position-absolute top-0 end-0 z-index-20 mt-2 text-white">{% if productsCount %}{{productsCount}}{%elif not productsCount %}0{%endif%}</span>
+                        </button>
+                    </li>
+                    <!-- /Navbar Cart-->
+    
+                </ul>
+                <!-- Navbar Icons-->
+    
+            </div>
+        </div>
+    </nav>
+    <!-- / Navbar-->    <!-- / Navbar-->
+
+    <!-- Main Section-->
+    <section class="mt-5 ">
+        <!-- Page Content Goes Here -->
+
+        <!-- Product Top-->
+        <section class="container">
+
+            <!-- Breadcrumbs-->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{%url 'home'%}">Home</a></li>
+                  <li class="breadcrumb-item"><a href="#">Categories</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">sneakers</li>
+                </ol>
+            </nav>            <!-- /Breadcrumbs-->
+
+            <div class="row g-5">
+
+                <!-- Images Section-->
+                <div class="col-12 col-lg-7">
+                    <div class="row g-1">
+                        <div class="swiper-container gallery-thumbs-vertical col-2 pb-4">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide bg-light bg-light h-auto">
+                                <picture>
+                                    <img class="img-fluid mx-auto d-table" src="{{ MEDIA_URL }}{{product.img_path}}.jpg" alt="{{product.name}} image">
+                                </picture>
+                              </div>
+                              <div class="swiper-slide bg-light bg-light h-auto">
+                                  <picture>
+                                    <img class="img-fluid mx-auto d-table" src="{{ MEDIA_URL }}{{product.img_path}}b.jpg" alt="{{product.name}} 2nd image">
+                                </picture>
+                              </div>
+                              <div class="swiper-slide bg-light bg-light h-auto">
+                                  <picture>
+                                    <img class="img-fluid mx-auto d-table" src="{{ MEDIA_URL }}{{product.img_path}}c.jpg" alt="{{product.name}} 3rd image">
+                                </picture>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="swiper-container gallery-top-vertical col-10">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide bg-white h-auto">
+                                    <picture>
+                                        <img class="img-fluid d-table mx-auto" src="{{ MEDIA_URL }}{{product.img_path}}.jpg" alt="{{product.name}} image" data-zoomable>
+                                    </picture>
+                                </div>
+                                <div class="swiper-slide bg-white h-auto">
+                                    <picture>
+                                      <img class="img-fluid d-table mx-auto" src="{{ MEDIA_URL }}{{product.img_path}}b.jpg" alt="{{product.name}} 2nd image" data-zoomable>
+                                  </picture>
+                                </div>
+                                <div class="swiper-slide bg-white h-auto">
+                                    <picture>
+                                      <img class="img-fluid d-table mx-auto" src="{{ MEDIA_URL }}{{product.img_path}}c.jpg" alt="{{product.name}} 3rd image" data-zoomable>
+                                  </picture>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <!-- /Images Section-->
+
+                <!-- Product Info Section-->
+                <div class="col-12 col-lg-5">
+                    <div class="pb-3">
+                    
+                        <!-- Product Name, Review, Brand, Price-->
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <p class="small fw-bolder text-uppercase tracking-wider text-muted mb-0 lh-1">Billabong</p>
+                            <div class="d-flex justify-content-start align-items-center">
+                                <!-- Review Stars Small-->
+                                <div class="rating position-relative d-table">
+                                    <div class="position-absolute stars" style="width: 80%">
+                                        <i class="ri-star-fill text-dark mr-1"></i>
+                                        <i class="ri-star-fill text-dark mr-1"></i>
+                                        <i class="ri-star-fill text-dark mr-1"></i>
+                                        <i class="ri-star-fill text-dark mr-1"></i>
+                                        <i class="ri-star-fill text-dark mr-1"></i>
+                                    </div>
+                                    <div class="stars">
+                                        <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                        <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                        <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                        <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                        <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                    </div>
+                                </div>            <small class="text-muted d-inline-block ms-2 fs-bolder">(1288)</small>
+                            </div>
+                        </div>
+                        <h1 class="mb-2 fs-2 fw-bold">{{product.name}}</h1>
+                        <div class="d-flex justify-content-start align-items-center">
+                            <p class="lead fw-bolder m-0 fs-3 lh-1 text-danger me-2">{{discount_price}} DH</p>
+                            <s class="lh-1 me-2"><span class="fw-bolder m-0">{{product.price}} DH</span></s>
+                            <p class="lead fw-bolder m-0 fs-6 lh-1 text-success">Save {{saved}} DH</p>
+                        </div>
+                        <!-- /Product Name, Review, Brand, Price-->
+                    
+                        <!-- Product Views-->
+                        <div class="d-flex justify-content-start mt-3">
+                            <div class="alert bg-light rounded py-1 px-2 d-table m-0">
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <i class="ri-fire-fill lh-1 text-orange"></i>
+                                    <div class="ms-2">
+                                        <small class="opacity-75 fw-bolder lh-1">167 views today</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Product Views-->
+                    
+                        <!-- Product Options-->
+                        <div class="border-top mt-4 mb-3">
+                            <div class="product-option mb-4 mt-4">
+                                <small class="text-uppercase d-block fw-bolder mb-2">
+                                    Colour : <span class="selected-option fw-bold">Crimson Blue</span>
+                                </small>
+                                <div class="d-flex justify-content-start">
+                                    <div class="form-group d-inline-block mr-1 mb-1 form-check-solid-bg-checkmark form-check-custom">
+                                        <input type="radio" class="form-check-color-input" id="option-colour-1" name="option-colour"
+                                            value="Dark Black">
+                                        <label class="form-check-label" for="option-colour-1"></label>
+                                    </div>
+                                    <div
+                                        class="form-group d-inline-block mr-1 mb-1 form-check-solid-bg-checkmark form-check-custom form-check-warning">
+                                        <input type="radio" class="form-check-color-input" id="option-colour-2" name="option-colour"
+                                            value="Sun Yellow">
+                                        <label class="form-check-label" for="option-colour-2"></label>
+                                    </div>
+                                    <div
+                                        class="form-group d-inline-block mr-1 mb-1 form-check-solid-bg-checkmark form-check-custom form-check-info">
+                                        <input type="radio" class="form-check-color-input" id="option-colour-3" name="option-colour"
+                                            value="Crimson Blue" checked>
+                                        <label class="form-check-label" for="option-colour-3"></label>
+                                    </div>
+                                    <div
+                                        class="form-group d-inline-block mr-1 mb-1 form-check-solid-bg-checkmark form-check-custom form-check-danger">
+                                        <input type="radio" class="form-check-color-input" id="option-colour-4" name="option-colour"
+                                            value="Cherry Red">
+                                        <label class="form-check-label" for="option-colour-4"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-option">
+                                <small class="text-uppercase d-block fw-bolder mb-2">
+                                    Size (UK) : <span class="selected-option fw-bold"></span>
+                                </small>
+                                <div class="form-group">
+                                    <select name="selectSize" class="form-control" data-choices>
+                                        <option value="">Please Select Size</option>
+                                        {% for size in product.get_sizes%}
+                                        <option value="{{size}}">{{size}}</option>
+                                        {%endfor%}
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Product Options-->
+                    
+                        <!-- Add To Cart-->
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="btn btn-dark btn-dark-chunky flex-grow-1 me-2 text-white">Add To Cart</button>
+                            <button class="btn btn-orange btn-orange-chunky"><i class="ri-heart-line"></i></button>
+                        </div>
+                        <!-- /Add To Cart-->
+                    
+                        <!-- Socials-->
+                        <div class="my-4">
+                            <div class="d-flex justify-content-start align-items-center">
+                                <p class="fw-bolder lh-1 mb-0 me-3">Share</p>
+                                <ul class="list-unstyled p-0 m-0 d-flex justify-content-start lh-1 align-items-center mt-1">
+                                    <li class="me-2"><a class="text-decoration-none" href="#" role="button"><i class="ri-facebook-box-fill"></i></a></li>
+                                    <li class="me-2"><a class="text-decoration-none" href="#" role="button"><i class="ri-instagram-fill"></i></a></li>
+                                    <li class="me-2"><a class="text-decoration-none" href="#" role="button"><i class="ri-pinterest-fill"></i></a></li>
+                                    <li class="me-2"><a class="text-decoration-none" href="#" role="button"><i class="ri-twitter-fill"></i></a></li>
+                                </ul>
+                            </div>    </div>
+                        <!-- Socials-->
+                    
+                        <!-- Special Offers-->
+                        <div class="bg-light rounded py-2 px-3">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex border-0 px-0 bg-transparent">
+                                    <i class="ri-truck-line"></i>
+                                    <span class="fs-6 ms-3">Standard delivery free for orders over 990 DH. Next day delivery 89 DH</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /Special Offers-->
+                    
+                    </div>                </div>
+                <!-- / Product Info Section-->
+            </div>
+        </section>
+        <!-- / Product Top-->
+
+        <section>
+
+            <!-- Product Tabs-->
+            <div class="mt-7 pt-5 border-top">
+                <div class="container">
+                    <!-- Tab Nav-->
+                    <ul class="nav justify-content-center nav-tabs nav-tabs-border mb-4" id="myTab" role="tablist">
+                      <li class="nav-item w-100 mb-2 mb-sm-0 w-sm-auto mx-sm-3" role="presentation">
+                        <a class="nav-link fs-5 fw-bolder nav-link-underline mx-sm-3 px-0 active" id="details-tab" data-bs-toggle="tab" href="#details"
+                          role="tab" aria-controls="details" aria-selected="true">The Details</a>
+                      </li>
+                      <li class="nav-item w-100 mb-2 mb-sm-0 w-sm-auto mx-sm-3" role="presentation">
+                        <a class="nav-link fs-5 fw-bolder nav-link-underline mx-sm-3 px-0" id="reviews-tab" data-bs-toggle="tab" href="#reviews"
+                          role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
+                      </li>
+                      <li class="nav-item w-100 mb-2 mb-sm-0 w-sm-auto mx-sm-3" role="presentation">
+                        <a class="nav-link fs-5 fw-bolder nav-link-underline mx-sm-3 px-0" id="delivery-tab" data-bs-toggle="tab" href="#delivery"
+                          role="tab" aria-controls="delivery" aria-selected="false">Delivery</a>
+                      </li>
+                      <li class="nav-item w-100 mb-2 mb-sm-0 w-sm-auto mx-sm-3" role="presentation">
+                        <a class="nav-link fs-5 fw-bolder nav-link-underline mx-sm-3 px-0" id="returns-tab" data-bs-toggle="tab" href="#returns"
+                          role="tab" aria-controls="returns" aria-selected="false">Returns</a>
+                      </li>
+                    </ul>
+                    <!-- / Tab Nav-->
+                    
+                    <!-- Tab Content-->
+                    <div class="tab-content" id="myTabContent">
+                    
+                      <!-- Tab Details Content-->
+                      <div class="tab-pane fade show active py-5" id="details" role="tabpanel" aria-labelledby="details-tab">
+                        <div class="col-12 col-lg-10 mx-auto">
+                          <div class="row g-5">
+                            <div class="col-12 col-md-6">
+                              <p>Soft, stretchy - the most flattering product of the season! What could be easier? Beautifully soft and
+                                light cotton-modal jersey, with the extra advantage of stretch, cut in an A-line - the universally
+                                flattering shape for every body. We promise you, once you've tried these lovely products - you'll be
+                                hooked..</p>
+                            </div>
+                            <div class="col-12 col-md-6">
+                              <ul>
+                                <li>Stretchy cotton-modal jersey stripe</li>
+                                <li>Garment washed</li>
+                                <li>Flat, covered elastic waistband</li>
+                                <li>58% pima cotton/38% viscose </li>
+                                <li>Modal/4% Lycra® elastane</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Tab Details Content-->
+                    
+                      <!-- Review Tab Content-->
+                      <div class="tab-pane fade py-5" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                        <!-- Customer Reviews-->
+                        <section class="reviews">
+                            <div class="col-lg-12 text-center pb-5">
+                        
+                                <h2 class="fs-1 fw-bold d-flex align-items-center justify-content-center">4.88 <small
+                                        class="text-muted fw-bolder ms-3 fw-bolder fs-6">(1288 reviews)</small></h2>
+                                <div class="d-flex justify-content-center">
+                                    <!-- Review Stars Medium-->
+                                    <div class="rating position-relative d-table">
+                                        <div class="position-absolute stars" style="width: 80%">
+                                            <i class="ri-star-fill text-dark ri-2x mr-1"></i>
+                                            <i class="ri-star-fill text-dark ri-2x mr-1"></i>
+                                            <i class="ri-star-fill text-dark ri-2x mr-1"></i>
+                                            <i class="ri-star-fill text-dark ri-2x mr-1"></i>
+                                            <i class="ri-star-fill text-dark ri-2x mr-1"></i>
+                                        </div>
+                                        <div class="stars">
+                                            <i class="ri-star-fill ri-2x mr-1 text-muted"></i>
+                                            <i class="ri-star-fill ri-2x mr-1 text-muted"></i>
+                                            <i class="ri-star-fill ri-2x mr-1 text-muted"></i>
+                                            <i class="ri-star-fill ri-2x mr-1 text-muted"></i>
+                                            <i class="ri-star-fill ri-2x mr-1 text-muted"></i>
+                                        </div>
+                                    </div>        </div>
+                        
+                        
+                                <div class="bg-light rounded py-3 px-4 mt-3 col-12 col-md-6 col-lg-5 mx-auto">
+                                    <ul class="list-group list-group-flush">
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 bg-transparent">
+                                            <span class="fw-bolder">Fit</span>
+                                            <!-- Review Stars Small-->
+                                            <div class="rating position-relative d-table">
+                                                <div class="position-absolute stars" style="width: 25%">
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                </div>
+                                                <div class="stars">
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                </div>
+                                            </div>                </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 bg-transparent">
+                                            <span class="fw-bolder">Value for money</span>
+                                            <!-- Review Stars Small-->
+                                            <div class="rating position-relative d-table">
+                                                <div class="position-absolute stars" style="width: 75%">
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                </div>
+                                                <div class="stars">
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                </div>
+                                            </div>                </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 bg-transparent">
+                                            <span class="fw-bolder">Build quality</span>
+                                            <!-- Review Stars Small-->
+                                            <div class="rating position-relative d-table">
+                                                <div class="position-absolute stars" style="width: 65%">
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                </div>
+                                                <div class="stars">
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                </div>
+                                            </div>                </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 bg-transparent">
+                                            <span class="fw-bolder">Style</span>
+                                            <!-- Review Stars Small-->
+                                            <div class="rating position-relative d-table">
+                                                <div class="position-absolute stars" style="width: 90%">
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                    <i class="ri-star-fill text-dark mr-1"></i>
+                                                </div>
+                                                <div class="stars">
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                    <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                </div>
+                                            </div>                </li>
+                                    </ul>
+                                </div>
+                        
+                                <!-- Review Modal-->
+                                <button type="button" class="btn btn-dark mt-4 hover-lift-sm hover-boxshadow disable-child-pointer" data-bs-toggle="offcanvas" data-bs-target="#offcanvasReview" aria-controls="offcanvasReview">
+                                    Write A Review <i class="ri-discuss-line align-bottom ms-1"></i>
+                                </button>
+                                <!-- / Review Modal Button-->
+                        
+                            </div>
+                        
+                            <!-- Single Review-->
+                            <article class="py-5 border-bottom border-top">
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <small class="text-muted fw-bolder">08/12/2021</small>
+                                        <p class="fw-bolder">Ben Sandhu, Ireland</p>
+                                        <span class="bg-success-faded fs-xs fw-bolder text-uppercase p-2">Verified Customer</span>
+                                    </div>
+                                    <div class="col-12 col-md-8 mt-4 mt-md-0">
+                                        <!-- Review Stars Small-->
+                                        <div class="rating position-relative d-table">
+                                            <div class="position-absolute stars" style="width: 80%">
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                            </div>
+                                            <div class="stars">
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                            </div>
+                                        </div>                <p class="fw-bolder mt-4">Happy with this considering the price</p>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit sequi, architecto placeat nam officia
+                                            sapiente ipsam at dolorum quisquam, ipsa earum qui laboriosam. Pariatur recusandae nihil, architecto
+                                            reprehenderit perferendis obcaecati. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                            Distinctio sint nesciunt velit quae, quisquam ullam veritatis itaque repudiandae. Inventore quae
+                                            doloribus modi nihil illum accusamus voluptas suscipit neque perferendis totam!</p>
+                        
+                                        <small class="fw-bolder bg-light d-table rounded py-1 px-2">Yes, I would recommend the product</small>
+                                        <div class="d-block d-md-flex mt-3 justify-content-between align-items-center">
+                                            <a href="#"
+                                                class="btn btn-link text-muted p-0 text-decoration-none w-100 w-md-auto fw-bolder text-start"
+                                                title=""><small>Was this review helpful?
+                                                    <i class="ri-thumb-up-line ms-4"></i> 112 <i class="ri-thumb-down-line ms-2"></i>
+                                                    23</small></a>
+                                            <a href="#"
+                                                class="btn btn-link text-muted p-0 text-decoration-none w-100 w-md-auto fw-bolder text-start mt-3 mt-md-0"
+                                                title=""><small>Flag as
+                                                    inappropriate <i class="ri-flag-2-line ms-2"></i></small></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- /Single Review-->
+                        
+                            <!-- Single Review-->
+                            <article class="py-5 border-bottom ">
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <small class="text-muted fw-bolder">09/01/2024</small>
+                                        <p class="fw-bolder">Sanae, Tangier</p>
+                                        <span class="bg-success-faded fs-xs fw-bolder text-uppercase p-2">Verified Customer</span>
+                                    </div>
+                                    <div class="col-12 col-md-8 mt-4 mt-md-0">
+                                        <!-- Review Stars Small-->
+                                        <div class="rating position-relative d-table">
+                                            <div class="position-absolute stars" style="width: 80%">
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                            </div>
+                                            <div class="stars">
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                            </div>
+                                        </div>                <p class="fw-bolder mt-4">Very happy with my purchase so far...</p>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit sequi, architecto placeat nam officia
+                                            sapiente ipsam at dolorum quisquam, ipsa earum qui laboriosam. Pariatur recusandae nihil, architecto
+                                            reprehenderit perferendis obcaecati. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                            Distinctio sint nesciunt velit quae, quisquam ullam veritatis itaque repudiandae. Inventore quae
+                                            doloribus modi nihil illum accusamus voluptas suscipit neque perferendis totam!</p>
+                        
+                                        <small class="fw-bolder bg-light d-table rounded py-1 px-2">Yes, I would recommend the product</small>
+                                        <div class="d-block d-md-flex mt-3 justify-content-between align-items-center">
+                                            <a href="#"
+                                                class="btn btn-link text-muted p-0 text-decoration-none w-100 w-md-auto fw-bolder text-start"
+                                                title=""><small>Was this review helpful?
+                                                    <i class="ri-thumb-up-line ms-4"></i> 112 <i class="ri-thumb-down-line ms-2"></i>
+                                                    23</small></a>
+                                            <a href="#"
+                                                class="btn btn-link text-muted p-0 text-decoration-none w-100 w-md-auto fw-bolder text-start mt-3 mt-md-0"
+                                                title=""><small>Flag as
+                                                    inappropriate <i class="ri-flag-2-line ms-2"></i></small></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- /Single Review-->
+                        
+                            <!-- Single Review-->
+                            <article class="py-5 border-bottom ">
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <small class="text-muted fw-bolder">30/01/2024</small>
+                                        <p class="fw-bolder">Iyad, Tangier</p>
+                                        <span class="bg-success-faded fs-xs fw-bolder text-uppercase p-2">Verified Customer</span>
+                                    </div>
+                                    <div class="col-12 col-md-8 mt-4 mt-md-0">
+                                        <!-- Review Stars Small-->
+                                        <div class="rating position-relative d-table">
+                                            <div class="position-absolute stars" style="width: 80%">
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                                <i class="ri-star-fill text-dark mr-1"></i>
+                                            </div>
+                                            <div class="stars">
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                                <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                            </div>
+                                        </div>                <p class="fw-bolder mt-4">I wish it was a little cheaper - otherwise love this!</p>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit sequi, architecto placeat nam officia
+                                            sapiente ipsam at dolorum quisquam, ipsa earum qui laboriosam. Pariatur recusandae nihil, architecto
+                                            reprehenderit perferendis obcaecati. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                            Distinctio sint nesciunt velit quae, quisquam ullam veritatis itaque repudiandae. Inventore quae
+                                            doloribus modi nihil illum accusamus voluptas suscipit neque perferendis totam!</p>
+                        
+                                        <small class="fw-bolder bg-light d-table rounded py-1 px-2">Yes, I would recommend the product</small>
+                                        <div class="d-block d-md-flex mt-3 justify-content-between align-items-center">
+                                            <a href="#"
+                                                class="btn btn-link text-muted p-0 text-decoration-none w-100 w-md-auto fw-bolder text-start"
+                                                title=""><small>Was this review helpful?
+                                                    <i class="ri-thumb-up-line ms-4"></i> 112 <i class="ri-thumb-down-line ms-2"></i>
+                                                    23</small></a>
+                                            <a href="#"
+                                                class="btn btn-link text-muted p-0 text-decoration-none w-100 w-md-auto fw-bolder text-start mt-3 mt-md-0"
+                                                title=""><small>Flag as
+                                                    inappropriate <i class="ri-flag-2-line ms-2"></i></small></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- /Single Review-->
+                        
+                        
+                            <a href="#" class="btn btn-dark d-table mx-auto mt-6 mb-3 hover-lift-sm hover-boxshadow" title="">Load More
+                                Reviews</a>
+                            <p class="text-muted text-center fw-bolder">Showing 3 of 1234</p>
+                        
+                        </section>  </div>
+                      <!-- / Review Tab Content-->
+                    
+                      <!-- Delivery Tab Content-->
+                      <div class="tab-pane fade py-5" id="delivery" role="tabpanel" aria-labelledby="delivery-tab">
+                        <div class="col-12 col-md-10 col-lg-8 mx-auto">
+                          <p>We are now offering contact-free delivery so that you can still receive your parcels safely without requiring a
+                            signature. Please see below for the available delivery methods, costs and timescales.</p>
+                          <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-4 bg-transparent">
+                              <div>
+                                <span class="fw-bolder d-block">Standard Delivery</span>
+                                <span class="text-muted">Delivery within 5 days of placing your order.</span>
+                              </div>
+                              <p class="m-0 lh-1 fw-bolder">$12.99</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-4 bg-transparent">
+                              <div>
+                                <span class="fw-bolder d-block">Priority Delivery</span>
+                                <span class="text-muted">Delivery within 2 days of placing your order.</span>
+                              </div>
+                              <p class="m-0 lh-1 fw-bolder">$17.99</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-4 bg-transparent">
+                              <div>
+                                <span class="fw-bolder d-block">Next Day Delivery</span>
+                                <span class="text-muted">Delivery within 24 hours of placing your order.</span>
+                              </div>
+                              <p class="m-0 lh-1 fw-bolder">$33.99</p>
+                            </li>
+                          </ul>
+                          <div class="bg-light rounded p-3">
+                            <p class="fs-6">Form more information, please see our delivery FAQs <a href="#">here</a></p>
+                            <p class="m-0 fs-6">If you do not find the answer to your query, please contact our customer support team on
+                              <b>0800 123 456</b> or email us at <b>support@domain.com</b>. We aim to respond within 48 hours to queries.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- / Delivery Tab Content-->
+                    
+                      <!-- Returns Tab Content-->
+                      <div class="tab-pane fade py-5" id="returns" role="tabpanel" aria-labelledby="returns-tab">
+                        <div class="col-12 col-md-10 col-lg-8 mx-auto">
+                          <p>We believe you will completely happy with your item, however if you aren't, there's no need to worry. We've
+                            listed below the ways you can return your item to us.</p>
+                          <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item px-0 py-4 bg-transparent">
+                              <p class="fw-bolder">Return via post</p>
+                              <p class="fs-6">To return your items for free through the postal system, please complete the returns form that
+                                comes with your order. You'll find a label at the bottom of the form. Simply peel the label and head to your
+                                nearest post office.</p>
+                            </li>
+                            <li class="list-group-item px-0 py-4 bg-transparent">
+                              <p class="fw-bolder">Return in person</p>
+                              <p class="fs-6">To return your items for free in person, simply stop into any one of our locations and speak
+                                to a member of our in-store team.</p>
+                            </li>
+                          </ul>
+                          <div class="bg-light rounded p-3">
+                            <p class="fs-6">Form more information, please see our returns FAQs <a href="#">here</a></p>
+                            <p class="m-0 fs-6">If you do not find the answer to your query, please contact our customer support team on
+                              <b>0800 123 456</b> or email us at <b>support@domain.com</b>. We aim to respond within 48 hours to queries.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- / Returns Tab Content-->
+                    
+                    </div>
+                    <!-- / Tab Content-->                </div>
+            </div>
+            <!-- / Product Tabs-->
+
+        </section>
+
+        <!-- Related Products-->
+        <div class="container my-8">
+            <h3 class="fs-4 fw-bold mb-5 text-center">You May Also Like</h3>
+                <!-- Swiper Latest -->
+                <div class="swiper-container overflow-visible"
+                  data-swiper
+                  data-options='{
+                    "spaceBetween": 25,
+                    "cssMode": true,
+                    "roundLengths": true,
+                    "scrollbar": {
+                      "el": ".swiper-scrollbar",
+                      "hide": false,
+                      "draggable": true
+                    },      
+                    "navigation": {
+                      "nextEl": ".swiper-next",
+                      "prevEl": ".swiper-prev"
+                    },  
+                    "breakpoints": {
+                      "576": {
+                        "slidesPerView": 1
+                      },
+                      "768": {
+                        "slidesPerView": 2
+                      },
+                      "992": {
+                        "slidesPerView": 3
+                      },
+                      "1200": {
+                        "slidesPerView": 4
+                      }            
+                    }
+                  }'>
+                  <div class="swiper-wrapper pb-5 pe-1">
+                    {% for product in may_like_lst %}
+                      <div class="swiper-slide d-flex h-auto">
+                        
+                        <!-- Card Product-->
+                        <div class="card position-relative h-100 card-listing hover-trigger">
+                            <div class="card-header">
+                                <picture class="position-relative overflow-hidden d-block bg-light">
+                                    <img class="w-100 img-fluid position-relative z-index-10" title="" src="{{ MEDIA_URL }}{{product.img_path}}.jpg" alt="">
+                                </picture>
+                                    <picture class="position-absolute z-index-20 start-0 top-0 hover-show bg-light">
+                                        <img class="w-100 img-fluid" title="" src="{{ MEDIA_URL }}{{product.img_path}}b.jpg" alt="">
+                                    </picture>
+                                <div class="card-actions">
+                                    <span class="small text-uppercase tracking-wide fw-bolder text-center d-block">Quick Add</span>
+                                    <div class="d-flex justify-content-center align-items-center flex-wrap mt-3">
+                                        {%for size in product.get_sizes%}
+                                        <button class="btn btn-outline-dark btn-sm mx-2 size-button" data-product-id="{{product.id}}">{{size}}</button>
+                                        {%endfor%}
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body px-0 text-center">
+                                <div class="d-flex justify-content-center align-items-center mx-auto mb-1">
+                                    <!-- Review Stars Small-->
+                                    <div class="rating position-relative d-table">
+                                        <div class="position-absolute stars" style="width: 90%">
+                                            <i class="ri-star-fill text-dark mr-1"></i>
+                                            <i class="ri-star-fill text-dark mr-1"></i>
+                                            <i class="ri-star-fill text-dark mr-1"></i>
+                                            <i class="ri-star-fill text-dark mr-1"></i>
+                                            <i class="ri-star-fill text-dark mr-1"></i>
+                                        </div>
+                                        <div class="stars">
+                                            <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                            <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                            <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                            <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                            <i class="ri-star-fill mr-1 text-muted opacity-25"></i>
+                                        </div>
+                                    </div> 
+                                    <span class="small fw-bolder ms-2 text-muted"> 4.7 (456)</span>
+                                </div>
+                                    <a class="mb-0 mx-2 mx-md-4 fs-p link-cover text-decoration-none d-block text-center"
+                                    href="{%url 'product' product.id%}">{{product.name}}</a>
+                                    <p class="fw-bolder m-0 mt-2">{{product.price}} DH</p>
+                            </div>
+                        </div>
+                        <!--/ Card Product-->
+
+                       
+                      </div>
+                      
+                      {%endfor%}
+                    <div class="swiper-slide d-flex h-auto justify-content-center align-items-center">
+                      <a href="#" class="d-flex text-decoration-none flex-column justify-content-center align-items-center">
+                        <span class="btn btn-dark btn-icon mb-3"><i class="ri-arrow-right-line ri-lg lh-1"></i></span>
+                        <span class="lead fw-bolder">See All</span>
+                      </a>
+                    </div>
+                  </div>
+                
+                  <!-- Buttons-->
+                  <div class="swiper-btn swiper-disabled-hide swiper-prev swiper-btn-side btn-icon bg-dark text-white ms-3 shadow-lg mt-n5 ms-n4"><i class="ri-arrow-left-s-line ri-lg"></i></div>
+                  <div class="swiper-btn swiper-disabled-hide swiper-next swiper-btn-side swiper-btn-side-right btn-icon bg-dark text-white me-n4 shadow-lg mt-n5"><i class="ri-arrow-right-s-line ri-lg"></i></div>
+                
+                  <!-- Add Scrollbar -->
+                  <div class="swiper-scrollbar"></div>
+                
+                </div>
+                <!-- / Swiper Latest-->        </div>
+        <!--/ Related Products-->
+
+
+        <!-- /Page Content -->
+    </section>
+    <!-- / Main Section-->
+
+    <!-- Footer -->
+    <!-- Footer-->
+    <footer class="bg-dark mt-10  ">
+    
+        <!-- Footer socials-->
+        <div class="bg-light py-4">
+            <div class="container d-flex justify-content-center align-items-center py-2">
+                <p class="lead fw-bolder mb-0 lh-1">Find us online</p>
+                <ul class="list-unstyled d-flex justify-content-start align-items-center mb-0 ms-3 lh-1">
+                    <li class="mx-1 mb-0 lh-1"><a
+                            class="text-muted text-decoration-none opacity-75-hover transition-all lh-1" href="#"><i
+                                class="ri-instagram-fill ri-xl lh-1"></i></a></li>
+                    <li class="mx-1 mb-0 lh-1"><a
+                            class="text-muted text-decoration-none opacity-75-hover transition-all lh-1" href="#"><i
+                                class="ri-facebook-fill ri-xl lh-1"></i></a></li>
+                    <li class="mx-1 mb-0 lh-1"><a
+                            class="text-muted text-decoration-none opacity-75-hover transition-all lh-1" href="#"><i
+                                class="ri-twitter-fill ri-xl lh-1"></i></a></li>
+                    <li class="mx-1 mb-0 lh-1"><a
+                            class="text-muted text-decoration-none opacity-75-hover transition-all lh-1" href="#"><i
+                                class="ri-snapchat-fill ri-xl lh-1"></i></a></li>
+                </ul>
+            </div>
+        </div>    
+        <!-- / Footer socials-->
+    
+        <!-- Instagram Display-->
+        <div class="container pt-8">
+            <div class="row g-2">
+                <div class="d-none d-md-block col-md-4" data-aos="fade-in" data-aos-delay="150">
+                    <picture>
+                        <img class="img-fluid" src="{{ MEDIA_URL }}images/instagram/instagram-1.jpg" alt="" data-zoomable>
+                    </picture>
+                </div>
+                <div class="col-12 col-md-8" data-aos="fade-in" data-aos-delay="300">
+                    <div class="row g-2">
+                        <div class="col-3">
+                            <picture>
+                                <img class="img-fluid" src="{{ MEDIA_URL }}images/instagram/instagram-2.jpg" alt="" data-zoomable>
+                            </picture>
+                        </div>
+                        <div class="col-3">
+                            <picture>
+                                <img class="img-fluid" src="{{ MEDIA_URL }}images/instagram/instagram-3.jpg" alt="" data-zoomable>
+                            </picture>
+                        </div>
+                        <div class="col-3">
+                            <picture>
+                                <img class="img-fluid" src="{{ MEDIA_URL }}images/instagram/instagram-4.jpg" alt="" data-zoomable>
+                            </picture>
+                        </div>
+                        <div class="col-3">
+                            <picture>
+                                <img class="img-fluid" src="{{ MEDIA_URL }}images/instagram/instagram-5.jpg" alt="" data-zoomable>
+                            </picture>
+                        </div>
+                        <div class="col-3">
+                            <picture>
+                                <img class="img-fluid" src="{{ MEDIA_URL }}images/instagram/instagram-6.jpg" alt="" data-zoomable>
+                            </picture>
+                        </div>
+                        <div class="col-3">
+                            <picture>
+                                <img class="img-fluid" src="{{ MEDIA_URL }}images/instagram/instagram-7.jpg" alt="" data-zoomable>
+                            </picture>
+                        </div>
+                        <div class="col-3">
+                            <picture>
+                                <img class="img-fluid" src="{{ MEDIA_URL }}images/instagram/instagram-8.jpg" alt="" data-zoomable>
+                            </picture>
+                        </div>
+                        <div class="col-3">
+                            <picture>
+                                <img class="img-fluid" src="{{ MEDIA_URL }}images/instagram/instagram-9.jpg" alt="" data-zoomable>
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <p class="text-muted m-0">Follow us on Instragram <span class="text-lowercase">@SneakerFever</span></p>
+                <a class="text-link-border fw-bolder m-0 text-white" href="#">More On Instagram <i
+                    class="ri-external-link-line align-bottom"></i></a>
+            </div>
+        </div>
+        <!-- Instagram Display-->
+        
+        <!-- Info Bar-->
+        <div class="container mt-7">
+            <div class="row">
+            
+                <!-- Info box-->
+                <div class="col-12 col-md-4 mb-3 mb-xxl-0 text-white" data-aos="fade-left">
+                    <div class="border-white-opacity border-2 p-4 d-flex flex-column flex-lg-row justify-content-start align-items-start h-100">
+                        <i class="ri-questionnaire-line ri-lg mb-3 mb-lg-0"></i>
+                        <div class="ms-lg-4">
+                            <p class="mb-1 lh-1 fw-bold">Customer Services</p>
+                            <small class="text-muted"><a class="text-muted" href="#">Click here</a> to chat with our support team</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Info box-->
+            
+                <!-- Info box-->
+                <div class="col-12 col-md-4 mb-3 mb-xxl-0 text-white" data-aos="fade-left" data-aos-delay="250">
+                    <div class="border-white-opacity border-2 p-4 d-flex flex-column flex-lg-row justify-content-start align-items-start h-100">
+                        <i class="ri-truck-line ri-lg mb-3 mb-lg-0"></i>
+                        <div class="ms-lg-4">
+                            <p class="mb-1 lh-1 fw-bold">Free Delivery</p>
+                            <small class="text-muted">Free standard delivery on all orders over $100</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Info box-->
+                
+                <!-- Info box-->
+                <div class="col-12 col-md-4 mb-3 mb-xxl-0 text-white" data-aos="fade-left" data-aos-delay="500">
+                    <div class="border-white-opacity border-2 p-4 d-flex flex-column flex-lg-row justify-content-start align-items-start h-100">
+                        <i class="ri-repeat-line ri-lg mb-3 mb-lg-0"></i>
+                        <div class="ms-lg-4">
+                            <p class="mb-1 lh-1 fw-bold">Returns</p>
+                            <small class="text-muted">30 day money-back returns if you change your mind</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Info box-->    
+            
+            </div>    </div>
+        <!-- / Info Bar-->     
+    
+        <!-- Menus & Newsletter-->
+        <div class="border-top-white-opacity py-7 mt-7 text-white">
+            <div class="container" data-aos="fade-in">
+                <div class="row my-4 flex-wrap">
+        
+                    <!-- Footer Nav-->
+                    <nav class="col-6 col-md mb-4 mb-md-0">
+                        <h6 class="mb-4 fw-bolder fs-6">Shop</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a class="text-decoration-none text-white opacity-75 opacity-25-hover transition-all"
+                                    href="{% url 'category' 1 %}">Nike</a></li>
+                            <li class="mb-2"><a class="text-decoration-none text-white opacity-75 opacity-25-hover transition-all"
+                                    href="{% url 'category' 2 %}">Yeezy</a></li>
+                            <li class="mb-2"><a class="text-decoration-none text-white opacity-75 opacity-25-hover transition-all"
+                                    href="{% url 'category' 3 %}">Jordan</a></li>
+                            <li class="mb-2"><a class="text-decoration-none text-white opacity-75 opacity-25-hover transition-all"
+                                    href="{%url 'home'%}">New Arrivals</a></li>
+                        </ul>
+                    </nav>
+                    <!-- /Footer Nav-->
+        
+                    <!-- Footer Nav-->
+                    <nav class="d-none d-md-block col-md">
+                        <h6 class="mb-4 fw-bolder fs-6">Navigation</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a class="text-decoration-none text-white opacity-75 opacity-25-hover transition-all"
+                                    href="{%url 'login'%}">Login</a></li>
+                            <li class="mb-2"><a class="text-decoration-none text-white opacity-75 opacity-25-hover transition-all"
+                                    href="{%url 'cart'%}">Cart</a></li>
+                            <li class="mb-2"><a class="text-decoration-none text-white opacity-75 opacity-25-hover transition-all"
+                                    href="{%url 'checkout'%}">Checkout</a></li>
+                            <li class="mb-2"><a class="text-decoration-none text-white opacity-75 opacity-25-hover transition-all"
+                                    href="{%url 'home'%}">About Us</a></li>
+                        </ul>
+                    </nav>
+                    <!-- /Footer Nav-->
+        
+                    <!-- Footer Contact-->
+                    <div class="col-12 col-md-5">
+                        <h6 class="mb-4 fw-bolder fs-6">Join Our Newsletter</h6>
+                        <p class="opacity-75">Sign up to our newsletter and we'll email you a code worth 15%
+                            off your first order. By subscribing to our mailing list you agree to our terms and conditions.</p>
+                            <form
+                            class="bg-white d-flex justify-content-start align-items-center border-dark-focus-within transition-all mt-4">
+                            <div class="input-group m-0">
+                                <input type="text" class="form-control d-flex flex-grow-1 border-0 bg-transparent py-3"
+                                    placeholder="Enter your email" aria-label="Enter your email">
+                                <span class="input-group-text bg-transparent border-0"><i
+                                        class="ri-arrow-right-line align-middle"></i></span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /Footer Contact-->
+        
+                </div>
+                <div
+                    class="border-top-white-opacity justify-content-between flex-column flex-md-row align-items-center d-flex pt-6 mt-6 px-0">
+                    <p class="small opacity-75">&copy; SneakerFever All Rights Reserved. Template by <a
+                            class="text-white" href="https://www.pixelrocket.store">Pixel Rocket</a></p>
+                    <nav>
+                        <ul class="list-unstyled">
+                            <li class="d-inline-block me-1 bg-white rounded px-2 pt-1"><i class="pi pi-paypal pi-sm"></i></li>
+                            <li class="d-inline-block me-1 bg-white rounded px-2 pt-1"><i class="pi pi-mastercard pi-sm"></i>
+                            </li>
+                            <li class="d-inline-block me-1 bg-white rounded px-2 pt-1"><i
+                                    class="pi pi-american-express pi-sm"></i></li>
+                            <li class="d-inline-block bg-white rounded px-2 pt-1"><i class="pi pi-visa pi-sm"></i></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Menus & Newsletter-->
+    
+    </footer>
+    <!-- / Footer-->
+    <!-- Offcanvas Imports-->
+    <!-- Cart Offcanvas-->
+    <div class="offcanvas offcanvas-end d-none" tabindex="-1" id="offcanvasCart">
+        <div class="offcanvas-header d-flex align-items-center">
+          <h5 class="offcanvas-title" id="offcanvasCartLabel">Your Cart</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="d-flex flex-column justify-content-between w-100 h-100">
+            <div>
+      
+              <!-- <div class="mt-4 mb-5">
+                <p class="mb-2 fs-6"><i class="ri-truck-line align-bottom me-2"></i> <span class="fw-bolder">DH22</span> away
+                  from free delivery</p>
+                <div class="progress f-h-1">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div> -->
+              {%for item in cartItems%}
+              <!-- Cart Product-->
+              <div class="row mx-0 pb-4 mb-4 border-bottom">
+                <div class="col-3">
+                  <picture class="d-block bg-light">
+                    <img class="img-fluid" src="{{MEDIA_URL}}{{item.product.img_path}}.jpg"
+                      alt="{{item.product.name}}">
+                  </picture>
+                </div>
+                <div class="col-9">
+                  <div>
+                    <h6 class="justify-content-between d-flex align-items-start mb-2">
+                      {{item.product.name}}
+                      <i class="ri-close-line delete-item" data-item-id="{{ item.id }}" onclick="deleteItem(event)"></i>
+                    </h6>
+                    <small class="d-block text-muted fw-bolder">Size: {{item.size}}</small>
+                    <small class="d-block text-muted fw-bolder">Qty: {{item.quantity}}</small>
+                  </div>
+                  <p class="fw-bolder text-end m-0">{{item.total_price}} DH</p>
+                </div>
+              </div>
+      
+              <!-- Cart Product-->
+              {%endfor%}
+              
+      
+            </div>
+            <div class="border-top pt-3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <p class="m-0 fw-bolder">Subtotal</p>
+                  <p class="m-0 fw-bolder" id="cart-total">{{cart.total_price}} DH</p>
+                </div>
+                <a href="{%url 'checkout'%}"
+                  class="btn btn-orange btn-orange-chunky mt-5 mb-2 d-block text-center">Checkout</a>
+                <a href="{%url 'cart'%}"
+                  class="btn btn-dark fw-bolder d-block text-center transition-all opacity-50-hover">View Cart</a>
+              </div>
+          </div>
+        </div>
+      </div>
+   
+    <!-- Review Offcanvas-->
+    <div class="offcanvas offcanvas-end d-none" tabindex="-1" id="offcanvasReview">
+      <div class="offcanvas-header d-flex align-items-center">
+        <h5 class="offcanvas-title" id="offcanvasReviewLabel">Leave A Review</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <!-- Review Form -->
+        <form>
+          <div class="form-group mb-3 mt-2">
+            <label class="form-label" for="formReviewName">Your Name</label>
+            <input type="text" class="form-control" id="formReviewName" placeholder="Your Name">
+          </div>
+          <div class="form-group mb-3 mt-2">
+            <label class="form-label" for="formReviewEmail">Your Email</label>
+            <input type="text" class="form-control" id="formReviewEmail" placeholder="Your Email">
+          </div>
+          <div class="form-group mb-3 mt-2">
+            <label class="form-label" for="formReviewTitle">Your Review Title</label>
+            <input type="text" class="form-control" id="formReviewTitle" placeholder="Review Title">
+          </div>
+          <div class="form-group mb-3 mt-2">
+            <label class="form-label" for="formReviewReview">Your Review</label>
+            <textarea class="form-control" name="formReviewReview" id="formReviewReview" cols="30" rows="5"
+              placeholder="Your Review"></textarea>
+          </div>
+          <button type="submit" class="btn btn-dark hover-lift hover-boxshadow">Submit Review</button>
+        </form>
+        <!-- / Review Form-->
+      </div>
+    </div>
+    <!-- Search Overlay-->
+    <section class="search-overlay">
+        <div class="container search-container">
+            <div class="py-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <p class="lead lh-1 m-0 fw-bold">What are you looking for?</p>
+                    <button class="btn btn-light btn-close-search"><i class="ri-close-circle-line align-bottom"></i> Close search</button>
+                </div>
+                <form>
+                    <input type="text" class="form-control" id="searchForm" placeholder="Search by product or category name...">             
+                </form>
+                <div class="my-5">
+                    <p class="lead fw-bolder">no results found  <span class="fw-bold"></span></p>
+                    <div class="row">
+                    </div>
+                </div>
+    
+                <div class="bg-dark p-4 text-white">
+                    <p class="lead m-0">Didn't find what you are looking for? <a class="transition-all opacity-50-hover text-white text-link-border border-white pb-1 border-2" href="#">Send us a message.</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Theme JS -->
+    <!-- Vendor JS -->
+    <script src="{% static 'assets/js/vendor.bundle.js'%}"></script>
+    <script src="{% static 'assets/js/other_scripts.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.min.js"></script>
+    
+    <!-- Theme JS -->
+    <script src="{% static './assets/js/theme.bundle.js'%}"></script>
+</body>
+
+</html>
